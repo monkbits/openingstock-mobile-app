@@ -1,0 +1,214 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+
+
+<!--<?xml version="1.0" encoding="utf-8"?>-->
+<!--<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"-->
+<!--    >-->
+<!--    xmlns:app="http://schemas.android.com/apk/res-auto"-->
+<!--    android:padding="24dp"-->
+<!--    xmlns:android="http://schemas.android.com/apk/res/android">-->
+
+<!--    &lt;!&ndash; App Logo / Motif &ndash;&gt;-->
+<!--    <ImageView-->
+<!--        android:id="@+id/ivLogo"-->
+<!--        android:layout_width="72dp"-->
+<!--        android:layout_height="72dp"-->
+<!--        android:layout_marginTop="32dp"-->
+<!--        android:contentDescription="@string/sanatanam_logo"-->
+<!--        app:srcCompat="@mipmap/ic_launcher"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintTop_toTopOf="parent" />-->
+
+<!--    &lt;!&ndash; Title Header &ndash;&gt;-->
+<!--    <TextView-->
+<!--        android:id="@+id/tvWelcomeTitle"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_marginTop="16dp"-->
+<!--        android:fontFamily="sans-serif-medium"-->
+<!--        android:text="@string/welcome_back"-->
+<!--        android:textColor="#2B2118"-->
+<!--        android:textSize="26sp"-->
+<!--        android:textStyle="bold"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintTop_toBottomOf="@id/ivLogo" />-->
+
+<!--    &lt;!&ndash; Subtitle &ndash;&gt;-->
+<!--    <TextView-->
+<!--        android:id="@+id/tvWelcomeSubtitle"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_marginTop="6dp"-->
+<!--        android:text="@string/log_in_to_sync_your_bookmarks_and_reading_progress"-->
+<!--        android:textColor="#6B7280"-->
+<!--        android:textSize="14sp"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintTop_toBottomOf="@id/tvWelcomeTitle" />-->
+
+<!--    &lt;!&ndash; Email Field &ndash;&gt;-->
+<!--    <com.google.android.material.textfield.TextInputLayout-->
+<!--        android:id="@+id/tilEmail"-->
+<!--        style="@style/Widget.Material3.TextInputLayout.OutlinedBox"-->
+<!--        android:layout_width="0dp"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_marginTop="32dp"-->
+<!--        android:hint="@string/email_address"-->
+<!--        app:boxCornerRadiusBottomEnd="12dp"-->
+<!--        app:boxCornerRadiusBottomStart="12dp"-->
+<!--        app:boxCornerRadiusTopEnd="12dp"-->
+<!--        app:boxCornerRadiusTopStart="12dp"-->
+<!--        app:startIconDrawable="@android:drawable/ic_dialog_email"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintTop_toBottomOf="@id/tvWelcomeSubtitle">-->
+
+<!--        <com.google.android.material.textfield.TextInputEditText-->
+<!--            android:id="@+id/etEmail"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:inputType="textEmailAddress"-->
+<!--            android:maxLines="1" />-->
+<!--    </com.google.android.material.textfield.TextInputLayout>-->
+
+<!--    &lt;!&ndash; Password Field &ndash;&gt;-->
+<!--    <com.google.android.material.textfield.TextInputLayout-->
+<!--        android:id="@+id/tilPassword"-->
+<!--        style="@style/Widget.Material3.TextInputLayout.OutlinedBox"-->
+<!--        android:layout_width="0dp"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_marginTop="16dp"-->
+<!--        android:hint="@string/password"-->
+<!--        app:boxCornerRadiusBottomEnd="12dp"-->
+<!--        app:boxCornerRadiusBottomStart="12dp"-->
+<!--        app:boxCornerRadiusTopEnd="12dp"-->
+<!--        app:boxCornerRadiusTopStart="12dp"-->
+<!--        app:endIconMode="password_toggle"-->
+<!--        app:startIconDrawable="@android:drawable/ic_lock_idle_lock"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintTop_toBottomOf="@id/tilEmail">-->
+
+<!--        <com.google.android.material.textfield.TextInputEditText-->
+<!--            android:id="@+id/etPassword"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:inputType="textPassword"-->
+<!--            android:maxLines="1" />-->
+<!--    </com.google.android.material.textfield.TextInputLayout>-->
+
+<!--    &lt;!&ndash; Forgot Password &ndash;&gt;-->
+<!--    <TextView-->
+<!--        android:id="@+id/tvForgotPassword"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_marginTop="10dp"-->
+<!--        android:background="?attr/selectableItemBackground"-->
+<!--        android:clickable="true"-->
+<!--        android:focusable="true"-->
+<!--        android:padding="4dp"-->
+<!--        android:text="@string/forgot_password"-->
+<!--        android:textColor="#D97706"-->
+<!--        android:textSize="13sp"-->
+<!--        android:textStyle="bold"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintTop_toBottomOf="@id/tilPassword" />-->
+
+<!--    &lt;!&ndash; Primary Login Button &ndash;&gt;-->
+<!--    <com.google.android.material.button.MaterialButton-->
+<!--        android:id="@+id/btnLogin"-->
+<!--        android:layout_width="0dp"-->
+<!--        android:layout_height="56dp"-->
+<!--        android:layout_marginTop="20dp"-->
+<!--        android:text="@string/log_in"-->
+<!--        android:textAllCaps="false"-->
+<!--        android:textColor="#FFFFFF"-->
+<!--        android:textSize="16sp"-->
+<!--        android:textStyle="bold"-->
+<!--        app:backgroundTint="#D97706"-->
+<!--        app:cornerRadius="14dp"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintTop_toBottomOf="@id/tvForgotPassword" />-->
+
+<!--    &lt;!&ndash; Divider with OR label &ndash;&gt;-->
+<!--    <LinearLayout-->
+<!--        android:id="@+id/dividerLayout"-->
+<!--        android:layout_width="0dp"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_marginTop="24dp"-->
+<!--        android:gravity="center"-->
+<!--        android:orientation="horizontal"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintTop_toBottomOf="@id/btnLogin">-->
+
+<!--        <View-->
+<!--            android:layout_width="0dp"-->
+<!--            android:layout_height="1dp"-->
+<!--            android:layout_weight="1"-->
+<!--            android:background="#E5E7EB" />-->
+
+<!--        <TextView-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:paddingHorizontal="12dp"-->
+<!--            android:text="@string/or"-->
+<!--            android:textColor="#9CA3AF"-->
+<!--            android:textSize="12sp"-->
+<!--            android:textStyle="bold" />-->
+
+<!--        <View-->
+<!--            android:layout_width="0dp"-->
+<!--            android:layout_height="1dp"-->
+<!--            android:layout_weight="1"-->
+<!--            android:background="#E5E7EB" />-->
+<!--    </LinearLayout>-->
+
+<!--    &lt;!&ndash; Google Sign-In Button &ndash;&gt;-->
+<!--    <com.google.android.material.button.MaterialButton-->
+<!--        android:id="@+id/btnGoogleSignIn"-->
+<!--        style="@style/Widget.Material3.Button.OutlinedButton"-->
+<!--        android:layout_width="0dp"-->
+<!--        android:layout_height="56dp"-->
+<!--        android:layout_marginTop="20dp"-->
+<!--        android:text="@string/continue_with_google"-->
+<!--        android:textAllCaps="false"-->
+<!--        android:textColor="#1F2937"-->
+<!--        android:textSize="15sp"-->
+<!--        app:cornerRadius="14dp"-->
+<!--        app:icon="@android:drawable/ic_menu_compass"-->
+<!--        app:iconGravity="textStart"-->
+<!--        app:iconTint="#D97706"-->
+<!--        app:strokeColor="#D1D5DB"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintTop_toBottomOf="@id/dividerLayout" />-->
+
+<!--    &lt;!&ndash; Skip / Continue as Guest (Helps pass Play Store reviews smoothly) &ndash;&gt;-->
+<!--    <TextView-->
+<!--        android:id="@+id/btnSkipGuest"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_marginTop="24dp"-->
+<!--        android:layout_marginBottom="24dp"-->
+<!--        android:background="?attr/selectableItemBackground"-->
+<!--        android:clickable="true"-->
+<!--        android:focusable="true"-->
+<!--        android:padding="8dp"-->
+<!--        android:text="@string/skip_amp_continue_as_guest"-->
+<!--        android:textColor="#6B7280"-->
+<!--        android:textSize="14sp"-->
+<!--        app:layout_constraintBottom_toBottomOf="parent"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintTop_toBottomOf="@id/btnGoogleSignIn" />-->
+
+<!--</androidx.constraintlayout.widget.ConstraintLayout>-->

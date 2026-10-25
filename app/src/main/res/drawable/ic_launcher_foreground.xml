@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="108dp"
+    android:height="108dp"
+    android:viewportWidth="108"
+    android:viewportHeight="108">
+    <!-- Topmost outer arc -->
+    <path
+        android:fillColor="#FFFFFF"
+        android:pathData="M 28,38 C 28,22 40,16 54,16 C 68,16 80,22 80,38 C 78,26 67,21 54,21 C 41,21 30,26 28,38 Z" />
+    <!-- Upper middle arc -->
+    <path
+        android:fillColor="#FFFFFF"
+        android:pathData="M 24,48 C 24,32 38,27 54,27 C 70,27 84,32 84,48 C 81,37 69,32 54,32 C 39,32 27,37 24,48 Z" />
+    <!-- Central ring -->
+    <path
+        android:fillColor="#FFFFFF"
+        android:fillType="evenOdd"
+        android:pathData="M 54,40 A 14,14 0 1,1 53.99,40 Z M 54,47 A 7,7 0 1,0 54.01,47 Z" />
+    <!-- Lower arc -->
+    <path
+        android:fillColor="#FFFFFF"
+        android:pathData="M 84,60 C 84,76 70,81 54,81 C 38,81 24,76 24,60 C 27,71 39,76 54,76 C 69,76 81,71 84,60 Z" />
+</vector>

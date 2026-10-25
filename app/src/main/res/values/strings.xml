@@ -1,0 +1,37 @@
+<resources>
+    <string name="app_name">Opening Stock</string>
+    <string name="nav_text_label_1">Home</string>
+    <string name="nav_text_label_2">Settings</string>
+    <string name="wallpaper">Wallpaper</string>
+    <string name="quotes">Quotes</string>
+    <string name="verse1">कर्मण्येवाधिकारस्ते मा फलेषु कदाचन। मा कर्मफलहेतुर्भूर्मा ते सङ्गोऽस्त्वकर्मणि॥</string>
+    <string name="read_geeta">Read Geeta</string>
+    <string name="geeta">Geeta</string>
+    <string name="privacy_policy">Privacy Policy</string>
+    <string name="privacy_policy_page">Privacy Policy</string>
+    <string name="setting_icon">Settings</string>
+    <string name="settings">Settings</string>
+    <string name="version">Version 2.0.4</string>
+    <string name="explain_geeta">Read the complete Srimad Bhagavad Gita offline. Access all 18 chapters and 700 verses with original Sanskrit shlokas and clear translations in Hindi, English, and Hinglish anytime, anywhere.</string>
+    <string name="name">Name</string>
+    <string name="lastname">Last Name</string>
+    <string name="first_name">First Name</string>
+    <string name="password">Password</string>
+    <string name="tab1">Tab1</string>
+    <string name="tab_2">Tab 2</string>
+    <string name="submit_details">Submit Details</string>
+    <string name="email_address">Email Address</string>
+    <string name="skip_amp_continue_as_guest"><![CDATA[Skip & Continue as Guest ➔]]></string>
+    <string name="continue_with_google">Continue with Google</string>
+    <string name="or">OR</string>
+    <string name="log_in">Log In</string>
+    <string name="forgot_password">Forgot Password?</string>
+    <string name="log_in_to_sync_your_bookmarks_and_reading_progress">Log in to sync your bookmarks and reading progress</string>
+    <string name="welcome_back">Welcome Back</string>
+    <string name="sanatanam_logo">Sanatanam Logo</string>
+    <string name="todo">todo</string>
+    <string name="content_of_tab_1">Content of Tab 1</string>
+    <string name="content_of_tab_2">cotent of tab 2\n</string>
+    <string name="add">Add</string>
+
+</resources>
