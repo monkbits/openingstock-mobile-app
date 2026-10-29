@@ -1,6 +1,8 @@
 package com.mymonkmindset.openingstock.fragments;
 
 import android.annotation.SuppressLint;
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
@@ -8,6 +10,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -18,40 +21,55 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.material.card.MaterialCardView;
 import com.google.android.material.chip.Chip;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.reflect.TypeToken;
 import com.mymonkmindset.openingstock.R;
+import com.mymonkmindset.openingstock.activities.BaseActivity;
 import com.mymonkmindset.openingstock.adapters.PersonAdapter;
+import com.mymonkmindset.openingstock.dto.ApiResponse;
+import com.mymonkmindset.openingstock.dto.PeopleDto;
 import com.mymonkmindset.openingstock.interfaces.HandlesUi;
 import com.mymonkmindset.openingstock.models.Person;
 import com.mymonkmindset.openingstock.models.PersonWithPhone;
 import com.mymonkmindset.openingstock.utils.DataLoader;
+import com.mymonkmindset.openingstock.utils.NetworkClient;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
+import java.util.stream.Collectors;
 
-public class FirstTabFragment extends Fragment implements HandlesUi {
+public class PersonTabFragment extends Fragment implements HandlesUi {
 
-    private MaterialCardView addbtn, cardAddPersonForm;
+    private MaterialCardView cardAddPersonForm;
     private EditText etInlineFirstName, etInlineLastName, etInlinePhone, etInlineDescription, etInlineEmail, etInlineLink, etInlineGroup;
     private Button btnInlineSubmit;
-    private Chip chipShowDeleted;
+    private Chip chipAddBtn, chipShowDeleted, chipShowCloudPerson, chipCount;
     private RecyclerView rvCardsList;
 
     private List<PersonWithPhone> personList;
     private PersonAdapter personAdapter;
     private Person editingPerson = null;
+    private SharedPreferences prefs;
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_first_tab, container, false);
+        return inflater.inflate(R.layout.fragment_person_tab, container, false);
     }
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         makeRecycleView(view);
+
+        // 1. Get SharedPreferences using requireContext()
+        prefs = requireContext().getSharedPreferences("OPENING_STOCK_PREF", Context.MODE_PRIVATE);
         gatherResources();
         setOnClick();
+        loadCloudPersons();
+
     }
 
     private void makeRecycleView(@NonNull View view) {
@@ -83,24 +101,26 @@ public class FirstTabFragment extends Fragment implements HandlesUi {
     @Override
     public void gatherResources() {
         if (getView() != null) {
-            addbtn = getView().findViewById(R.id.addPersonBtn);
-            cardAddPersonForm = getView().findViewById(R.id.cardAddPersonForm);
-            etInlineFirstName = getView().findViewById(R.id.etInlineFirstName);
-            etInlineLastName = getView().findViewById(R.id.etInlineLastName);
-            etInlinePhone = getView().findViewById(R.id.etInlinePhone);
-            etInlineDescription = getView().findViewById(R.id.etInlineDescription);
-            etInlineEmail = getView().findViewById(R.id.etInlineEmail);
-            etInlineLink = getView().findViewById(R.id.etInlineLink);
-            etInlineGroup = getView().findViewById(R.id.etInlineGroup);
-            btnInlineSubmit = getView().findViewById(R.id.btnInlineSubmit);
-            chipShowDeleted = getView().findViewById(R.id.chipShowDeleted);
+            chipAddBtn                  = getView().findViewById(R.id.addPersonBtn);
+            cardAddPersonForm       = getView().findViewById(R.id.cardAddPersonForm);
+            etInlineFirstName       = getView().findViewById(R.id.etInlineFirstName);
+            etInlineLastName        = getView().findViewById(R.id.etInlineLastName);
+            etInlinePhone           = getView().findViewById(R.id.etInlinePhone);
+            etInlineDescription     = getView().findViewById(R.id.etInlineDescription);
+            etInlineEmail           = getView().findViewById(R.id.etInlineEmail);
+            etInlineLink            = getView().findViewById(R.id.etInlineLink);
+            etInlineGroup           = getView().findViewById(R.id.etInlineGroup);
+            btnInlineSubmit         = getView().findViewById(R.id.btnInlineSubmit);
+            chipShowDeleted         = getView().findViewById(R.id.chipShowDeleted);
+            chipShowCloudPerson     = getView().findViewById(R.id.chipShowCloudPerson);
+            chipCount               = getView().findViewById(R.id.chipCount);
         }
     }
 
     @Override
     public void setOnClick() {
-        if (addbtn != null) {
-            addbtn.setOnClickListener(v -> toggleAddPersonForm());
+        if (chipAddBtn != null) {
+            chipAddBtn.setOnClickListener(v -> toggleAddPersonForm());
         }
 
         if (btnInlineSubmit != null) {
@@ -110,6 +130,57 @@ public class FirstTabFragment extends Fragment implements HandlesUi {
         if (chipShowDeleted != null) {
             chipShowDeleted.setOnCheckedChangeListener((buttonView, isChecked) -> loadPersons());
         }
+
+        if(chipShowCloudPerson != null){
+            chipShowCloudPerson.setOnClickListener(view -> {
+                personList = new ArrayList<>();
+                loadCloudPersons();
+            });
+        }
+    }
+
+    private void loadCloudPersons(){
+        View view = getView();
+        String backendUrl = prefs.getString("backend_url", "");
+        String uri = backendUrl + "v4/people/get-all-people";
+        if (backendUrl.isEmpty()) {
+            Toast.makeText(requireContext(), "Backend URL is not set", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
+        NetworkClient.post(uri, "{}", new NetworkClient.HttpResponseCallback() {
+            @SuppressLint("NotifyDataSetChanged")
+            @Override
+            public void onSuccess(String responseBody) {
+                if (!isAdded()) return; // Protect against detached fragment
+//                        if (printData != null) printData.setText(responseBody);
+                Gson g = new Gson();
+                ApiResponse<List<PeopleDto>> apiResponse = g.fromJson(responseBody, new TypeToken<ApiResponse<List<PeopleDto>>>() {}.getType());
+
+                List<PersonWithPhone> pl = (apiResponse != null && apiResponse.getData() != null)
+                        ? apiResponse.getData().stream()
+                          .map(d -> PersonWithPhone.builder()
+                                    .person(Person.builder()
+                                            .name(d.getName())
+                                            .build())
+                                    .phoneNumber(d.getPhone()) // map corresponding fields
+                                    .build())
+                          .collect(Collectors.toList()) // or .collect(Collectors.toList()) if Java < 16 / Android minSdk < 34
+                        : Collections.emptyList();
+
+                personList.addAll(pl);
+                chipCount.setText("Count: " + String.valueOf(personList.size()));
+                personAdapter.notifyDataSetChanged();
+                Toast.makeText(requireContext(), "Response: " + responseBody, Toast.LENGTH_SHORT).show();
+            }
+
+            @Override
+            public void onFailure(String errorMessage) {
+                if (!isAdded()) return;
+                if (chipCount != null) chipCount.setText( uri +" " + errorMessage);
+                Toast.makeText(requireContext(), "Error: " + errorMessage, Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 
     private void toggleAddPersonForm() {
@@ -261,7 +332,7 @@ public class FirstTabFragment extends Fragment implements HandlesUi {
     @Override
     public void onDestroyView() {
         super.onDestroyView();
-        addbtn = null;
+        chipAddBtn = null;
         cardAddPersonForm = null;
         etInlineFirstName = null;
         etInlineLastName = null;
@@ -271,6 +342,8 @@ public class FirstTabFragment extends Fragment implements HandlesUi {
         etInlineLink = null;
         etInlineGroup = null;
         btnInlineSubmit = null;
+        chipCount = null;
         chipShowDeleted = null;
+        chipShowCloudPerson = null;
     }
 }

@@ -8,7 +8,7 @@ import androidx.viewpager2.adapter.FragmentStateAdapter;
 import com.mymonkmindset.openingstock.fragments.CallLogTabFragment;
 import com.mymonkmindset.openingstock.fragments.ContactTabFragment;
 import com.mymonkmindset.openingstock.fragments.DashboardTabFragment;
-import com.mymonkmindset.openingstock.fragments.FirstTabFragment;
+import com.mymonkmindset.openingstock.fragments.PersonTabFragment;
 import com.mymonkmindset.openingstock.fragments.ReminderTabFragment;
 
 public class TabsPagerAdapter extends FragmentStateAdapter {
@@ -26,7 +26,7 @@ public class TabsPagerAdapter extends FragmentStateAdapter {
             case 1:
                 return new ReminderTabFragment();
             case 2:
-                return new FirstTabFragment();
+                return new PersonTabFragment();
             case 3:
                 return new ContactTabFragment();
             default:

@@ -22,42 +22,70 @@
         android:gravity="center_vertical|end"
         android:paddingHorizontal="12dp"
         android:paddingVertical="4dp">
+        <com.google.android.material.chip.Chip
+            android:id="@+id/chipCount"
+            style="@style/Widget.Material3.Chip.Filter"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:checkable="false"
+            android:textSize="12sp"
+            app:chipStartPadding="0dp"
+            app:chipEndPadding="0dp"
+            android:text="Count: 0"
+            app:chipCornerRadius="0dp"
+            android:textColor="#111827"
+            app:chipBackgroundColor="#E5E7EB"
+            tools:ignore="HardcodedText" />
+
+        <com.google.android.material.chip.Chip
+            android:id="@+id/chipShowCloudPerson"
+            style="@style/Widget.Material3.Chip.Filter"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:checkable="false"
+            android:textSize="12sp"
+            app:chipStartPadding="0dp"
+            app:chipEndPadding="0dp"
+            android:text="Show Cloud"
+            app:chipCornerRadius="0dp"
+            android:textColor="#111827"
+            app:chipBackgroundColor="#E5E7EB"
+            tools:ignore="HardcodedText" />
 
         <com.google.android.material.chip.Chip
             android:id="@+id/chipShowDeleted"
             style="@style/Widget.Material3.Chip.Filter"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="8dp"
             android:checkable="true"
+            android:layout_marginEnd="8dp"
             android:text="Show Deleted"
+            android:textSize="12sp"
+            app:chipStartPadding="0dp"
+            app:chipEndPadding="0dp"
             android:textColor="#111827"
+            app:chipCornerRadius="0dp"
             app:chipBackgroundColor="#E5E7EB"
             tools:ignore="HardcodedText" />
-
-        <com.google.android.material.card.MaterialCardView
+        <com.google.android.material.chip.Chip
             android:id="@+id/addPersonBtn"
+            style="@style/Widget.Material3.Chip.Filter"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:clickable="true"
-            android:focusable="true"
-            app:cardBackgroundColor="#2563EB"
-            app:cardCornerRadius="8dp"
-            app:cardElevation="2dp"
-            app:strokeWidth="0dp">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:paddingHorizontal="14dp"
-                android:paddingVertical="8dp"
-                android:text="+ Add Person"
-                android:textColor="#FFFFFF"
-                android:textSize="14sp"
-                android:textStyle="bold"
-                tools:ignore="HardcodedText" />
-        </com.google.android.material.card.MaterialCardView>
+            android:checkable="true"
+            android:layout_marginEnd="8dp"
+            android:text="Add"
+            android:textSize="12sp"
+            app:chipStartPadding="0dp"
+            app:chipEndPadding="0dp"
+            android:textColor="#111827"
+            app:chipCornerRadius="0dp"
+            app:chipBackgroundColor="#E5E7EB"
+            tools:ignore="HardcodedText" />
     </LinearLayout>
+
 
     <!-- Inline Add Person Form Card (Collapsible) -->
     <com.google.android.material.card.MaterialCardView

@@ -6,7 +6,8 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#121318">
+    android:background="@color/light_1"
+    >
 
     <!-- Top Bar -->
     <include
@@ -37,7 +38,6 @@
             <com.google.android.material.card.MaterialCardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:cardBackgroundColor="#1A1C23"
                 app:cardCornerRadius="20dp"
                 app:cardElevation="2dp"
                 app:strokeColor="#2B2E38"
@@ -71,7 +71,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="12dp"
-                        android:textColor="#FFFFFF"
+                        android:textColor="@color/black"
                         android:textSize="20sp"
                         android:textStyle="bold"
                         tools:text="Ankur Goyal" />
@@ -128,7 +128,7 @@
                             android:layout_marginStart="6dp"
                             android:layout_weight="1"
                             android:text="Share Profile"
-                            android:textColor="#FFFFFF"
+                            android:textColor="@color/black"
                             app:cornerRadius="12dp"
                             app:strokeColor="#2B2E38"
                             tools:ignore="HardcodedText" />
@@ -287,7 +287,40 @@
                         tools:text="Founder @ Monk Mindset. Passionate about building native Android applications, AI tools, and productivity solutions." />
                 </LinearLayout>
             </com.google.android.material.card.MaterialCardView>
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="16dp"
+                app:cardCornerRadius="16dp"
+                app:cardElevation="2dp"
+                app:strokeColor="#2B2E38"
+                app:strokeWidth="1dp">
 
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="16dp">
+
+                    <EditText
+                        android:id="@+id/backendUrl"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="@string/url_for_backend"
+                        android:inputType="textUri|textNoSuggestions"
+                        android:maxLines="1"
+                        android:importantForAutofill="no" />
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/setBackendBtn"
+                        android:layout_width="match_parent"
+                        android:layout_height="52dp"
+                        android:layout_marginTop="12dp"
+                        android:text="@string/url_for_backend"
+                        app:cornerRadius="12dp" />
+
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
             <!-- Languages & Topics Card -->
             <com.google.android.material.card.MaterialCardView
                 android:layout_width="match_parent"

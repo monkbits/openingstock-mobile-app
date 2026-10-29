@@ -33,5 +33,6 @@
     <string name="content_of_tab_1">Content of Tab 1</string>
     <string name="content_of_tab_2">cotent of tab 2\n</string>
     <string name="add">Add</string>
+    <string name="url_for_backend">URL FOR BACKEND</string>
 
 </resources>

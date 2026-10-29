@@ -613,7 +613,7 @@ public class DataLoader {
                     long durationSec = durationIdx != -1 ? cursor.getLong(durationIdx) : 0;
                     String durationStr = durationSec > 0 ? (durationSec / 60) + "m " + (durationSec % 60) + "s" : "0s";
 
-                    callLogs.add(new CallLogItem(name, number, callType, formattedDate, durationStr));
+                    callLogs.add(new CallLogItem(name, number, callType, String.valueOf(dateMillis), String.valueOf(durationSec)));
                 }
             }
         } catch (Exception ignored) {
